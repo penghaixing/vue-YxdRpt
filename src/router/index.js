@@ -1,35 +1,11 @@
-import Vue from 'vue'
-import Router from "vue-router";
-
-Vue.use(Router);
-
-// 导入组件模块
-const home = () => import('../pages/home')
+import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
-    { 
-      path: "/", 
-      redirect: "/home" 
-    },
-    {
-      path: "/home",
-      name: "home",
-      component: home
-    }
-  ];
-  const router = new Router({
-    routes
-  })
-//   router.beforeEach((to, from, next) => {
-//     if (to.meta.title) {
-//       //判断是否有标题
-//       console.log(to.meta.title);
-//       document.title = to.meta.title;
-//     }
-//     NProgress.start();
-//     next();
-//   });
-//   router.afterEach((to, from) => {
-//     NProgress.done(); // 结束Progress
-//   });
-  export default router
+  { path: '/home', componet: () => import('../Home/home.vue') }
+]
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+});
+export default router
